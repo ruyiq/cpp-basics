@@ -1,16 +1,24 @@
-//使用数组实现求斐波那契数列的第 N 项。
 #include <iostream>
-#include <algorithm>
 
 using namespace std;
 
 int main(){
-    int N;
-    cin >> N;
-    int f[100]; //Initializing the array
-    f[0]=0;
-    f[1]=1;
-    for (i=2; i<=N; i++) f[i] = f[i - 1] + f[i - 2];
-    cout << f[n] << endl;
+    int T;
+    cin >> T;
+    //since we are given 0<=N<=60. 
+    long long F[60];
+    // get the array of Fab
+    F[0]=0;
+    F[1]=1;
+    for (int j=2; j<=60;j++){
+        F[j]=F[j-1]+F[j-2];
+    }
+    //loop over the T number of N
+    for (int i=0; i<T; i++){
+        int N; 
+        cin >> N;
+        printf("Fib(%d) = %lld \n", N, F[N]);
+    }
+
     return 0;
 }
