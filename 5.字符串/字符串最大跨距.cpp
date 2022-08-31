@@ -1,29 +1,47 @@
 #include <iostream>
-
+#include <cstring>
+#include <cstdio>
 using namespace std;
-
 int main(){
-    string str, str1, str2;
-    
+    string s;
+    string s1;
+    string s2;
     char c;
-    while (cin >> c, c != ',') str += c; //getline(cin, s, ',');
-    while (cin >> c, c != ',') str1 += c;
-    while (cin >> c) str2 += c;
-
-    if (s.size() < s1.size() || s.size() < s2.size()) puts("-1");
-    // check whether both s1 and s2 are in S
-    else{
-
-        //check whether s1 is in S
-   
-
-        //check whether s2 is in S
+    while(cin>>c,c!=',') s+=c;
+    while(cin>>c,c!=',') s1+=c;
+    while(cin>>c)s2+=c;
+    if(s.size() < s1.size() || s.size()< s2.size()){
+        puts("-1");
+        return 0;
+    }
+    int l=0;
+    for(;l+s1.size()<s.size();l++){
+        int k =0;
+        for(;k<s1.size();k++){
+            if(s[l+k]!=s1[k]){
+                break;
+            }
+        }
+        if(k == s1.size()){
+            break;
+        }
     }
 
-    //check whether Str1 is on the left side of str2
+    int r=s.size()-s2.size();
+    for(;r>=0;r--){
+        int k =0;
+        for(;k<s2.size();k++){
+            if(s[r+k]!=s2[k]){
+                break;
+            }
+        }
+        if(k==s2.size()){
+            break;
+        }
+    }
 
 
-    //check whether there is no overlap between str1 and str2
-
+    if(l+s1.size()-1>=r)puts("-1");
+    else printf("%d",r-l-s1.size());
     return 0;
 }
